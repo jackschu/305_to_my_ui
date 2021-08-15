@@ -45,20 +45,30 @@ export default function TOFDropdown({
       setSelectedLabels(didReselect ? [] : [label]);
     }
   };
+
   return (
     <div tabIndex="1" onBlur={onBlur}>
       <div className={styles.dropdowninput} onClick={handleDropdownClick}>
-        <div style={{ gridColumn: 1 }}>
+        <div
+          className={styles.inputtext}
+          style={{ float: "left", width: "80%" }}
+        >
           {selectedLabels.length > 0
             ? selectedLabels.join(", ")
             : placeholder ?? "Select option(s)"}
         </div>
-        <div style={{ gridColumn: 2 }} className={styles.triangle} />
+        <div style={{ float: "left", width: "20%" }}>
+          <div className={styles.triangle} />
+        </div>
       </div>
-      {isOpen &&
-        items.map((item, index) => (
-          <TOFDropdownItem key={item.label} item={item} onSelect={onSelect} />
-        ))}
+
+      {isOpen && (
+        <div className={styles.dropdownlist}>
+          {items.map((item, index) => (
+            <TOFDropdownItem key={item.label} item={item} onSelect={onSelect} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

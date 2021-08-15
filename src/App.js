@@ -19,7 +19,7 @@ export default function App(): React.MixedElement {
           Edit <code>src/App.js</code> and save to reload OK.
         </p>
         <TOFDropdown
-          multiple={false}
+          multiple={true}
           labels={labels}
           selectedLabels={selected}
           setSelectedLabels={setSelected}

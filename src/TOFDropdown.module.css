@@ -4,8 +4,20 @@
   border-radius: 4px;
   box-sizing: border-box;
   padding: 12px;
-  display: grid;
-  align: stretch;
+  justify-content: space-between;
+  width: 300px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+
+.inputtext{
+text-align: start;
+	width: 300px;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+
 }
 
 .triangle {
@@ -13,9 +25,19 @@
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   border-bottom: 12px solid transparent;
+  float: right;
   width: 12px;
   height: 12px;
   box-sizing: border-box;
   margin-top: 12px;
   margin-left: 12px;
+}
+
+.dropdownlist {
+	min-width: 400px;
+	max-height: 280px;
+	position:absolute;
+	z-index:100;
+	background: #612940;
+	overflow-y: auto;
 }
