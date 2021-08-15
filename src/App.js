@@ -1,8 +1,9 @@
-// @flow
+// @flow strict
 
 import logo from "./logo.svg";
 import "./App.css";
-import React from "react";
+import TOFDropdown from "./TOFDropdown.js";
+import * as React from "react";
 
 export default function App(): React.MixedElement {
   return (
@@ -12,6 +13,7 @@ export default function App(): React.MixedElement {
         <p>
           Edit <code>src/App.js</code> and save to reload OK.
         </p>
+        <TOFDropdown />
         <a
           className="App-link"
           href="https://reactjs.org"
