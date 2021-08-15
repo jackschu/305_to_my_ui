@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import styles from "./TOFDropdown.module.css";
+import TOFDropdownItem from "./TOFDropdownItem.js";
 import useSelectedItems from "./useSelectedItems.js";
 import { useState } from "react";
 
@@ -48,16 +49,7 @@ export default function TOFDropdown({
       </div>
       {isOpen &&
         items.map((item, index) => (
-          <p
-            key={item.label}
-            value={item.label}
-            onClick={() => {
-              console.log(item.label, index);
-              onSelect(item.label);
-            }}
-          >
-            {item.isSelected ? item.label + " YES" : item.label}
-          </p>
+          <TOFDropdownItem key={item.label} item={item} onSelect={onSelect} />
         ))}
     </div>
   );
