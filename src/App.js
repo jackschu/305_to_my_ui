@@ -1,13 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+// @flow
 
-function App() {
+import logo from "./logo.svg";
+import "./App.css";
+import React from "react";
+
+export default function App(): React.MixedElement {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save to reload OK.
         </p>
         <a
           className="App-link"
@@ -21,5 +24,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
