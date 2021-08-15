@@ -1,0 +1,21 @@
+.dropdowninput {
+  color: DodgerBlue;
+  border: 1px solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px;
+  display: grid;
+  align: stretch;
+}
+
+.triangle {
+  border-top: 12px DodgerBlue solid;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  width: 12px;
+  height: 12px;
+  box-sizing: border-box;
+  margin-top: 15px;
+  margin-left: 12px;
+}
