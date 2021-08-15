@@ -2,12 +2,32 @@
 
 import * as React from "react";
 
-export default function TOFDropdown(): React.MixedElement {
-  const values = ["run", "crawl", "walk"];
+type Props = {
+  labels: $ReadOnlyArray<string>,
+  selectedLabels: $ReadOnlyArray<string>,
+  onSelect: ($ReadOnlyArray<string>) => void,
+  multiple?: ?boolean,
+};
+export default function TOFDropdown({
+  labels,
+  selectedLabels,
+  onSelect,
+  multiple,
+}: Props): React.MixedElement {
   return (
-    <select>
-      {values.map((value) => (
-        <option value={value}>{value}</option>
+    <select
+      multiple={multiple ?? false}
+      value={selectedLabels}
+      onChange={(event: { target: HTMLSelectElement }) => {
+        const selected = Array.from(event.target.selectedOptions);
+        console.log(selected);
+        onSelect(selected.map((item) => item.label));
+      }}
+    >
+      {labels.map((label) => (
+        <option key={label} value={label}>
+          {label}
+        </option>
       ))}
     </select>
   );
