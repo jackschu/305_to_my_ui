@@ -5,9 +5,11 @@ import "./App.css";
 import TOFDropdown from "./TOFDropdown.js";
 import * as React from "react";
 import { useState } from "react";
+import { LONGLIST } from "./LongListConst.js";
 
 export default function App(): React.MixedElement {
-  const labels = ["run", "crawl", "walk"];
+  //	const labels = ["run", "crawl", "walk"];
+  const labels = LONGLIST;
   const [selected, setSelected] = useState<$ReadOnlyArray<string>>([]);
   return (
     <div className="App">
@@ -17,7 +19,7 @@ export default function App(): React.MixedElement {
           Edit <code>src/App.js</code> and save to reload OK.
         </p>
         <TOFDropdown
-          multiple={true}
+          multiple={false}
           labels={labels}
           selectedLabels={selected}
           setSelectedLabels={setSelected}

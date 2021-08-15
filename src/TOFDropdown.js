@@ -18,11 +18,14 @@ export default function TOFDropdown({
   labels,
   selectedLabels,
   setSelectedLabels,
-  multiple,
+  multiple: maybeMutliple,
   placeholder,
 }: Props): React.MixedElement {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const items = useSelectedItems(labels, selectedLabels);
+
+  const multiple = maybeMutliple ?? false;
+
   const handleDropdownClick = () => setIsOpen(!isOpen);
   const onBlur = (event) => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -32,10 +35,15 @@ export default function TOFDropdown({
 
   const onSelect = (label) => {
     const updatedSelections = selectedLabels.filter((item) => item !== label);
-    if (updatedSelections.length === selectedLabels.length) {
-      updatedSelections.push(label);
+    const didReselect = updatedSelections.length !== selectedLabels.length;
+    if (multiple) {
+      if (!didReselect) {
+        updatedSelections.push(label);
+      }
+      setSelectedLabels(updatedSelections);
+    } else {
+      setSelectedLabels(didReselect ? [] : [label]);
     }
-    setSelectedLabels(updatedSelections);
   };
   return (
     <div tabIndex="1" onBlur={onBlur}>
