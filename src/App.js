@@ -21,7 +21,6 @@ export default function App(): React.MixedElement {
           labels={labels}
           selectedLabels={selected}
           onSelect={(val) => {
-            console.log("setting", val);
             setSelected(val);
           }}
         />

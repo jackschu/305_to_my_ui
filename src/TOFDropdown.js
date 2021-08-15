@@ -20,7 +20,6 @@ export default function TOFDropdown({
       value={selectedLabels}
       onChange={(event: { target: HTMLSelectElement }) => {
         const selected = Array.from(event.target.selectedOptions);
-        console.log(selected);
         onSelect(selected.map((item) => item.label));
       }}
     >
