@@ -2,11 +2,13 @@
 
 import * as React from "react";
 import styles from "./TOFDropdown.module.css";
+import useSelectedItems from "./useSelectedItems.js";
+import { useState } from "react";
 
 type Props = {
   labels: $ReadOnlyArray<string>,
   selectedLabels: $ReadOnlyArray<string>,
-  onSelect: ($ReadOnlyArray<string>) => void,
+  setSelectedLabels: ($ReadOnlyArray<string>) => void,
   multiple?: ?boolean,
   placeholder?: ?string,
 };
@@ -14,13 +16,29 @@ type Props = {
 export default function TOFDropdown({
   labels,
   selectedLabels,
-  onSelect,
+  setSelectedLabels,
   multiple,
   placeholder,
 }: Props): React.MixedElement {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const items = useSelectedItems(labels, selectedLabels);
+  const handleDropdownClick = () => setIsOpen(!isOpen);
+  const onBlur = (event) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setIsOpen(false);
+    }
+  };
+
+  const onSelect = (label) => {
+    const updatedSelections = selectedLabels.filter((item) => item !== label);
+    if (updatedSelections.length === selectedLabels.length) {
+      updatedSelections.push(label);
+    }
+    setSelectedLabels(updatedSelections);
+  };
   return (
-    <>
-      <div className={styles.dropdowninput}>
+    <div tabIndex="1" onBlur={onBlur}>
+      <div className={styles.dropdowninput} onClick={handleDropdownClick}>
         <div style={{ gridColumn: 1 }}>
           {selectedLabels.length > 0
             ? selectedLabels.join(", ")
@@ -28,22 +46,19 @@ export default function TOFDropdown({
         </div>
         <div style={{ gridColumn: 2 }} className={styles.triangle} />
       </div>
-
-      <select
-        className={styles.dropdowninput}
-        multiple={multiple ?? false}
-        value={selectedLabels}
-        onChange={(event: { target: HTMLSelectElement }) => {
-          const selected = Array.from(event.target.selectedOptions);
-          onSelect(selected.map((item) => item.label));
-        }}
-      >
-        {labels.map((label) => (
-          <option key={label} value={label}>
-            {label}
-          </option>
+      {isOpen &&
+        items.map((item, index) => (
+          <p
+            key={item.label}
+            value={item.label}
+            onClick={() => {
+              console.log(item.label, index);
+              onSelect(item.label);
+            }}
+          >
+            {item.isSelected ? item.label + " YES" : item.label}
+          </p>
         ))}
-      </select>
-    </>
+    </div>
   );
 }

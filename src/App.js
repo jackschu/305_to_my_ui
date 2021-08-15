@@ -20,9 +20,7 @@ export default function App(): React.MixedElement {
           multiple={true}
           labels={labels}
           selectedLabels={selected}
-          onSelect={(val) => {
-            setSelected(val);
-          }}
+          setSelectedLabels={setSelected}
         />
         <p>{selected.join(", ")}</p>
         <a
