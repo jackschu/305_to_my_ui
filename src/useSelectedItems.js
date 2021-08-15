@@ -1,6 +1,5 @@
 // @flow strict
 
-import * as React from "react";
 import { useMemo } from "react";
 export type Item = {
   label: string,
@@ -13,7 +12,6 @@ export default function useSelectedItems(
 ): $ReadOnlyArray<Item> {
   return useMemo(() => {
     const valueSet = new Set(selectedLabels);
-    const selectedItems = [];
     const isSelected = (label) => valueSet.has(label);
     return labels.map((label) => {
       return { label: label, isSelected: isSelected(label) };
