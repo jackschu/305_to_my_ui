@@ -28,7 +28,7 @@ export default function TOFDropdown({
       }}
       style={{
         ...(isHovered && {
-          //HACK should use a color pallette
+          // HACK should use a color pallette
           backgroundColor: "#612940",
         }),
       }}
@@ -40,7 +40,7 @@ export default function TOFDropdown({
         type={multiple ? "checkbox" : "radio"}
         readOnly={true}
         checked={item.isSelected}
-      ></input>
+      />
       <div className={styles.text}>{item.label}</div>
     </div>
   );
