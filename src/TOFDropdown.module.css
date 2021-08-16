@@ -10,6 +10,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  display:flex;
+  align-items:center;
 }
 
 .inputtext {
@@ -18,6 +20,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
 }
 
 
@@ -35,7 +38,7 @@
 }
 
 .dropdownlist {
-  min-width: 400px;
+  min-width: 340px;
   max-height: 280px;
   position: absolute;
   z-index: 100;

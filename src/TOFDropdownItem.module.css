@@ -1,15 +1,16 @@
 .text {
-	flex: 1;
+  flex: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .box {
-	vertical-align: middle;
-	flex: none;
+  vertical-align: middle;
+  flex: none;
 }
 
 .container {
-	display:flex;
-	align-items:center;
-	flex-direction:row;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
-
