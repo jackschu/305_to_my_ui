@@ -55,17 +55,25 @@ export default function TOFDropdown({
         >
           {selectedLabels.length > 0
             ? selectedLabels.join(", ")
-            : placeholder ?? "Select option(s)"}
+            : placeholder ?? "select option(s)"}
         </div>
         <div style={{ float: "left", width: "20%" }}>
+          {/* fun css-trick to avoid pulling in icons*/}
           <div className={styles.triangle} />
         </div>
       </div>
 
       {isOpen && (
         <div className={styles.dropdownlist}>
-          {items.map((item, index) => (
-            <TOFDropdownItem key={item.label} item={item} onSelect={onSelect} />
+          {items.map((item, index, array) => (
+            <div key={item.label}>
+              <TOFDropdownItem
+                item={item}
+                onSelect={onSelect}
+                multiple={multiple}
+              />
+              {index !== array.length - 1 && <hr style={{ margin: "0px" }} />}
+            </div>
           ))}
         </div>
       )}

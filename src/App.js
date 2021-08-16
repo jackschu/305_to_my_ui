@@ -8,31 +8,30 @@ import { useState } from "react";
 import { LONGLIST } from "./LongListConst.js";
 
 export default function App(): React.MixedElement {
-  //	const labels = ["run", "crawl", "walk"];
-  const labels = LONGLIST;
+  const labels = ["run", "crawl", "walk"];
+  const longLabels = LONGLIST;
+  const [singleSelected, setSingleSelected] = useState<$ReadOnlyArray<string>>(
+    []
+  );
   const [selected, setSelected] = useState<$ReadOnlyArray<string>>([]);
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload OK.
-        </p>
+        <p>multi-select with many options</p>
         <TOFDropdown
           multiple={true}
-          labels={labels}
+          labels={longLabels}
           selectedLabels={selected}
           setSelectedLabels={setSelected}
         />
-        <p>{selected.join(", ")}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>single-select with few options</p>
+        <TOFDropdown
+          multiple={false}
+          labels={labels}
+          selectedLabels={singleSelected}
+          setSelectedLabels={setSingleSelected}
+        />
       </header>
     </div>
   );

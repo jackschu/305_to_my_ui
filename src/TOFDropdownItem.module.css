@@ -1,0 +1,15 @@
+.text {
+	flex: 1;
+}
+
+.box {
+	vertical-align: middle;
+	flex: none;
+}
+
+.container {
+	display:flex;
+	align-items:center;
+	flex-direction:row;
+}
+

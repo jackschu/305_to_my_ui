@@ -5,19 +5,19 @@
   box-sizing: border-box;
   padding: 12px;
   justify-content: space-between;
+
   width: 300px;
-  overflow:hidden;
-  white-space:nowrap;
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.inputtext{
-text-align: start;
-	width: 300px;
-  overflow:hidden;
-  white-space:nowrap;
+.inputtext {
+  text-align: start;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
-
 }
 
 .triangle {
@@ -34,10 +34,10 @@ text-align: start;
 }
 
 .dropdownlist {
-	min-width: 400px;
-	max-height: 280px;
-	position:absolute;
-	z-index:100;
-	background: #612940;
-	overflow-y: auto;
+  min-width: 400px;
+  max-height: 280px;
+  position: absolute;
+  z-index: 100;
+  background: #311720;
+  overflow-y: auto;
 }
